@@ -1,37 +1,40 @@
 <div class="main-div">
-  <div *ngIf="!loading; else elseBlock" class="main-countdown-row">
-    <div class="countdown-part">
-      <div class="part-row">
-        <div class="part-digit">{{days | firstDigit}}</div>
-        <div class="part-digit">{{days | secondDigit}}</div>
+  <ng-template [ngIf]="!loading" [ngIfElse]="elseBlock">
+    <div *ngIf="showCountdown" class="main-countdown-row" [@tada]="!isNowDate" (@tada.done)="zoomOut()" [@zoomOutUpOnLeave] (@zoomOutUpOnLeave.done)="navigate()">
+<!--      [@zoomOutUpOnLeave] (@zoomOutUpOnLeave.done)="navigate()"-->
+      <div class="countdown-part">
+        <div class="part-row">
+          <div class="part-digit">{{days | firstDigit}}</div>
+          <div class="part-digit">{{days | secondDigit}}</div>
+        </div>
+        <span class="part-measure">Días</span>
       </div>
-      <span class="part-measure">Días</span>
-    </div>
 
-    <div class="countdown-part">
-      <div class="part-row">
-        <div class="part-digit">{{hours | firstDigit}}</div>
-        <div class="part-digit">{{hours | secondDigit}}</div>
+      <div class="countdown-part">
+        <div class="part-row">
+          <div class="part-digit">{{hours | firstDigit}}</div>
+          <div class="part-digit">{{hours | secondDigit}}</div>
+        </div>
+        <span class="part-measure">Horas</span>
       </div>
-      <span class="part-measure">Horas</span>
-    </div>
 
-    <div class="countdown-part">
-      <div class="part-row">
-        <div class="part-digit">{{minutes | firstDigit}}</div>
-        <div class="part-digit">{{minutes | secondDigit}}</div>
+      <div class="countdown-part">
+        <div class="part-row">
+          <div class="part-digit">{{minutes | firstDigit}}</div>
+          <div class="part-digit">{{minutes | secondDigit}}</div>
+        </div>
+        <span class="part-measure">Minutos</span>
       </div>
-      <span class="part-measure">Minutos</span>
-    </div>
 
-    <div class="countdown-part">
-      <div class="part-row">
-        <div class="part-digit">{{seconds | firstDigit}}</div>
-        <div class="part-digit">{{seconds | secondDigit}}</div>
+      <div class="countdown-part">
+        <div class="part-row">
+          <div class="part-digit">{{seconds | firstDigit}}</div>
+          <div class="part-digit">{{seconds | secondDigit}}</div>
+        </div>
+        <span class="part-measure">Segundos</span>
       </div>
-      <span class="part-measure">Segundos</span>
     </div>
-  </div>
+  </ng-template>
   <ng-template #elseBlock>
     <mat-spinner [diameter]="50"></mat-spinner>
   </ng-template>
