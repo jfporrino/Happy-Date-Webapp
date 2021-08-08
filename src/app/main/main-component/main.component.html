@@ -1,8 +1,20 @@
 <div class="main-div">
-  <div *ngIf="varaIsDone" [@fadeInOnEnter]>
-      <div *ngFor="let star of tinyStars" id="tiny_star" [ngStyle]="{top: star.top, right: star.right}"></div>
-      <div *ngFor="let star of mediumStars" id="medium_star" [ngStyle]="{top: star.top, right: star.right}"></div>
-      <div *ngFor="let star of bigStars" id="big_star" [ngStyle]="{top: star.top, right: star.right}"></div>
-  </div>
-  <div id="signature"></div>
+    <div *ngIf="varaIsDone" [@fadeInOnEnter]>
+        <div *ngFor="let star of tinyStars" id="tiny_star" [ngStyle]="{top: star.top, right: star.right}"></div>
+        <div *ngFor="let star of mediumStars" id="medium_star" [ngStyle]="{top: star.top, right: star.right}"></div>
+        <div *ngFor="let star of bigStars" id="big_star" [ngStyle]="{top: star.top, right: star.right}"></div>
+    </div>
+    <div id="signature" [ngStyle]="{position: initIsDone ? 'unset' : 'absolute'}"></div>
+    <div *ngIf="initIsDone" [@zoomInOnEnter] class="options-row">
+        <div class="option">
+            <h2>Video</h2>
+        </div>
+        <div class="option">
+            <h2>Fotos</h2>
+        </div>
+        <div class="option">
+            <h2>Cartita</h2>
+        </div>
+    </div>
+<!--    <carousel *ngIf="initIsDone" [@bounceInUpOnEnter] [cellsToShow]="1" [loop]="true" [images]="randomImages" [objectFit]="'contain'"></carousel>-->
 </div>

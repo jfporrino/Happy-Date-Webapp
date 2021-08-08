@@ -3,6 +3,7 @@ import {MainComponent} from './main.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {CommonModule} from '@angular/common';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 const routes: Routes = [
     {
@@ -19,6 +20,7 @@ const routes: Routes = [
         CommonModule,
         RouterModule.forChild(routes),
         MatProgressSpinnerModule,
+        IvyCarouselModule,
     ],
     providers: [],
 })

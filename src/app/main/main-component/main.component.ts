@@ -1,19 +1,26 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import * as Vara from 'vara';
-import {fadeInOnEnterAnimation} from 'angular-animations';
+import {bounceInUpOnEnterAnimation, fadeInOnEnterAnimation, zoomInOnEnterAnimation} from 'angular-animations';
+import {images} from 'src/app/helpers/constants/images.constants';
 
 @Component({
   selector: 'main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
   animations: [
-      fadeInOnEnterAnimation({duration: 10000})
+      fadeInOnEnterAnimation({duration: 10000}),
+      bounceInUpOnEnterAnimation(),
+      zoomInOnEnterAnimation()
   ]
 })
 export class MainComponent implements OnInit{
   innerWidth;
   innerHeight;
   varaIsDone = false;
+  initIsDone = false;
+
+  images = [];
+  randomImages = [];
 
   tinyStars = [];
   mediumStars = [];
@@ -22,6 +29,11 @@ export class MainComponent implements OnInit{
   constructor() { }
 
   ngOnInit(): void {
+    this.images = images;
+    this.randomImages = this.getRandom(this.images, 20).map((i) => {
+      return {path: i};
+    });
+
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
 
@@ -50,6 +62,9 @@ export class MainComponent implements OnInit{
     });
     vara.animationEnd(() => {
       this.varaIsDone = true;
+      setTimeout(() => {
+        this.initIsDone = true;
+      }, 5000);
     });
   }
 
@@ -98,4 +113,18 @@ export class MainComponent implements OnInit{
     return `${Math.floor(Math.random() * (this.innerWidth - 5))}px`;
   }
 
+  getRandom(arr, n) {
+    const result = new Array(n);
+    let len = arr.length;
+    const taken = new Array(len);
+    if (n > len) {
+      throw new RangeError('getRandom: more elements taken than available');
+    }
+    while (n--) {
+      const x = Math.floor(Math.random() * len);
+      result[n] = arr[x in taken ? taken[x] : x];
+      taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
+  }
 }
