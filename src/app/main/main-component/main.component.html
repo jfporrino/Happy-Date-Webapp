@@ -1,3 +1,8 @@
 <div class="main-div">
+  <div *ngIf="varaIsDone" [@fadeInOnEnter]>
+      <div *ngFor="let star of tinyStars" id="tiny_star" [ngStyle]="{top: star.top, right: star.right}"></div>
+      <div *ngFor="let star of mediumStars" id="medium_star" [ngStyle]="{top: star.top, right: star.right}"></div>
+      <div *ngFor="let star of bigStars" id="big_star" [ngStyle]="{top: star.top, right: star.right}"></div>
+  </div>
   <div id="signature"></div>
 </div>
