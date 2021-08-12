@@ -58,7 +58,7 @@ export class MainComponent implements OnInit{
   signature() {
     const myNode = document.getElementById('signature');
     myNode.innerHTML = '';
-    this.vara = new Vara('#signature', '../assets/fonts/parisienne.json', [
+    this.vara = new Vara('#signature', 'assets/fonts/parisienne.json', [
       {
         text: 'Lau y Juan',
         duration: 3000,
