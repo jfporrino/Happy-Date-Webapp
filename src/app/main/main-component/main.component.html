@@ -6,15 +6,25 @@
     </div>
     <div id="signature" [ngStyle]="{position: initIsDone ? 'unset' : 'absolute'}"></div>
     <div *ngIf="initIsDone" [@zoomInOnEnter] class="options-row">
-        <div class="option">
-            <h2>Video</h2>
+        <div class="option" (click)="setSelectionState('Video')">
+            <span class="option-text" [ngStyle]="{'text-decoration': selectionState === 'Video'? 'underline 0.5px' : 'unset'}">Video</span>
         </div>
-        <div class="option">
-            <h2>Fotos</h2>
+        <div class="option" (click)="setSelectionState('Fotos')">
+            <span class="option-text" [ngStyle]="{'text-decoration': selectionState === 'Fotos'? 'underline 0.5px' : 'unset'}">Fotos</span>
         </div>
-        <div class="option">
-            <h2>Cartita</h2>
+        <div class="option" (click)="setSelectionState('Cartita')">
+            <span class="option-text" [ngStyle]="{'text-decoration': selectionState === 'Cartita'? 'underline 0.5px' : 'unset'}">Cartita</span>
         </div>
     </div>
-<!--    <carousel *ngIf="initIsDone" [@bounceInUpOnEnter] [cellsToShow]="1" [loop]="true" [images]="randomImages" [objectFit]="'contain'"></carousel>-->
+    <div *ngIf="initIsDone" class="content-div" [@zoomInOnEnter]>
+        <div class="video-div" *ngIf="leaveFinished && selectionState === 'Video'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
+            <h1>Video</h1>
+        </div>
+        <div class="photos-div" *ngIf="leaveFinished && selectionState === 'Fotos'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
+            <carousel [cellsToShow]="1" [loop]="true" [images]="randomImages" [objectFit]="'contain'"></carousel>
+        </div>
+        <div class="letter-div" *ngIf="leaveFinished && selectionState === 'Cartita'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
+            <h1>Cartita</h1>
+        </div>
+    </div>
 </div>

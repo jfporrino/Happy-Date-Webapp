@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import * as Vara from 'vara';
-import {bounceInUpOnEnterAnimation, fadeInOnEnterAnimation, zoomInOnEnterAnimation} from 'angular-animations';
+import {bounceInUpOnEnterAnimation, fadeInOnEnterAnimation, zoomInOnEnterAnimation, zoomOutOnLeaveAnimation} from 'angular-animations';
 import {images} from 'src/app/helpers/constants/images.constants';
 
 @Component({
@@ -10,7 +10,8 @@ import {images} from 'src/app/helpers/constants/images.constants';
   animations: [
       fadeInOnEnterAnimation({duration: 10000}),
       bounceInUpOnEnterAnimation(),
-      zoomInOnEnterAnimation()
+      zoomInOnEnterAnimation(),
+      zoomOutOnLeaveAnimation()
   ]
 })
 export class MainComponent implements OnInit{
@@ -18,6 +19,7 @@ export class MainComponent implements OnInit{
   innerHeight;
   varaIsDone = false;
   initIsDone = false;
+  vara;
 
   images = [];
   randomImages = [];
@@ -25,6 +27,9 @@ export class MainComponent implements OnInit{
   tinyStars = [];
   mediumStars = [];
   bigStars = [];
+
+  selectionState = 'Video';
+  leaveFinished = true;
 
   constructor() { }
 
@@ -47,10 +52,13 @@ export class MainComponent implements OnInit{
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     this.initStars();
+    this.signature();
   }
 
   signature() {
-    const vara = new Vara('#signature', '../assets/fonts/parisienne.json', [
+    const myNode = document.getElementById('signature');
+    myNode.innerHTML = '';
+    this.vara = new Vara('#signature', '../assets/fonts/parisienne.json', [
       {
         text: 'Lau y Juan',
         duration: 3000,
@@ -60,7 +68,7 @@ export class MainComponent implements OnInit{
       fontSize: this.innerWidth < 600 ? 48 : 72,
       color: '#FAFAFA',
     });
-    vara.animationEnd(() => {
+    this.vara.animationEnd(() => {
       this.varaIsDone = true;
       setTimeout(() => {
         this.initIsDone = true;
@@ -126,5 +134,16 @@ export class MainComponent implements OnInit{
       taken[x] = --len in taken ? taken[len] : len;
     }
     return result;
+  }
+
+  setSelectionState(selection: string){
+    if (this.selectionState !== selection && this.leaveFinished){
+      this.leaveFinished = false;
+      this.selectionState = selection;
+    }
+  }
+
+  leaveDone(){
+    this.leaveFinished = true;
   }
 }
