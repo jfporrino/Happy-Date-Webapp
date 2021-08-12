@@ -15,11 +15,6 @@ const IMAGE_14 = 'assets/amores/20201031_210116.jpg';
 const IMAGE_15 = 'assets/amores/20201101_012437.jpg';
 const IMAGE_16 = 'assets/amores/20201105_213345.jpg';
 const IMAGE_17 = 'assets/amores/20201105_213350.jpg';
-const IMAGE_18 = 'assets/amores/20201115_004703.jpg';
-const IMAGE_19 = 'assets/amores/20201115_004708.jpg';
-const IMAGE_20 = 'assets/amores/20201115_004711.jpg';
-const IMAGE_21 = 'assets/amores/20201115_004729.jpg';
-const IMAGE_22 = 'assets/amores/20201115_004731.jpg';
 const IMAGE_23 = 'assets/amores/20201122_191809.jpg';
 const IMAGE_24 = 'assets/amores/20201122_191822.jpg';
 const IMAGE_25 = 'assets/amores/20201122_191830.jpg';
@@ -165,11 +160,6 @@ export const images = [
     IMAGE_15,
     IMAGE_16,
     IMAGE_17,
-    IMAGE_18,
-    IMAGE_19,
-    IMAGE_20,
-    IMAGE_21,
-    IMAGE_22,
     IMAGE_23,
     IMAGE_24,
     IMAGE_25,
