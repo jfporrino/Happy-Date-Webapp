@@ -56,6 +56,10 @@ export class MainComponent implements OnInit, AfterViewInit{
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
 
+    console.log('InnerWidth', this.innerWidth);
+    console.log('InnerHeight', this.innerHeight);
+
+
     this.randomizeImages();
 
     this.initStars();
@@ -91,7 +95,7 @@ export class MainComponent implements OnInit, AfterViewInit{
         textAlign: 'center'
       },
     ], {
-      fontSize: this.innerWidth < 600 ? 48 : 72,
+      fontSize: this.innerWidth < 600 || this.innerHeight < 600 ? 48 : 72,
       color: '#FAFAFA',
     });
     this.vara.animationEnd(() => {
