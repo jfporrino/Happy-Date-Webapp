@@ -4,6 +4,8 @@ import {bounceInUpOnEnterAnimation, fadeInOnEnterAnimation, zoomInOnEnterAnimati
 import {images} from 'src/app/helpers/constants/images.constants';
 import {CarouselComponent} from 'angular-responsive-carousel';
 
+let apiLoaded = false;
+
 @Component({
   selector: 'main',
   templateUrl: './main.component.html',
@@ -39,6 +41,16 @@ export class MainComponent implements OnInit, AfterViewInit{
   constructor() { }
 
   ngOnInit(): void {
+
+    if (!apiLoaded) {
+      // This code loads the IFrame Player API code asynchronously, according to the instructions at
+      // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+      apiLoaded = true;
+    }
+
     this.images = images;
 
     this.innerWidth = window.innerWidth;

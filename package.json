@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~12.1.4",
     "@angular/platform-browser-dynamic": "~12.1.4",
     "@angular/router": "~12.1.4",
+    "@angular/youtube-player": "^12.2.1",
     "@videogular/ngx-videogular": "^4.1.0",
     "angular-animations": "^0.11.0",
     "angular-responsive-carousel": "^2.1.2",

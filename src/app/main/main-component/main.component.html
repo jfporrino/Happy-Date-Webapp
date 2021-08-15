@@ -25,37 +25,40 @@
                     <img class="corner-decoration corner-right-bottom" src="assets/imageedit_3_7855246474.jpg"/>
                     <img class="corner-decoration corner-left-bottom" src="assets/imageedit_3_7855246474.jpg"/>
                     <div class="video-div" *ngIf="leaveFinished && selectionState === 'Video'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
-                        <vg-player>
-                            <vg-overlay-play></vg-overlay-play>
-                            <vg-buffering></vg-buffering>
+<!--                        <vg-player>-->
+<!--                            <vg-overlay-play></vg-overlay-play>-->
+<!--                            <vg-buffering></vg-buffering>-->
 
-                            <vg-scrub-bar *ngIf="innerWidth > 600">
-                                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-                            </vg-scrub-bar>
+<!--                            <vg-scrub-bar *ngIf="innerWidth > 600">-->
+<!--                                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>-->
+<!--                                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
+<!--                            </vg-scrub-bar>-->
 
-                            <vg-controls>
-                                <vg-play-pause></vg-play-pause>
-                                <vg-playback-button *ngIf="innerWidth > 600"></vg-playback-button>
+<!--                            <vg-controls>-->
+<!--                                <vg-play-pause></vg-play-pause>-->
+<!--                                <vg-playback-button *ngIf="innerWidth > 600"></vg-playback-button>-->
 
-                                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-                                <span class="time-span" *ngIf="innerWidth > 600">/</span>
-                                <vg-time-display vgProperty="total" vgFormat="mm:ss" *ngIf="innerWidth > 600"></vg-time-display>
+<!--                                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>-->
+<!--                                <span class="time-span" *ngIf="innerWidth > 600">/</span>-->
+<!--                                <vg-time-display vgProperty="total" vgFormat="mm:ss" *ngIf="innerWidth > 600"></vg-time-display>-->
 
-                                <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+<!--                                <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>-->
 
 
-            <!--                    <vg-track-selector></vg-track-selector>-->
-                                <vg-mute *ngIf="innerWidth > 600"></vg-mute>
-                                <vg-volume *ngIf="innerWidth > 600"></vg-volume>
+<!--            &lt;!&ndash;                    <vg-track-selector></vg-track-selector>&ndash;&gt;-->
+<!--                                <vg-mute *ngIf="innerWidth > 600"></vg-mute>-->
+<!--                                <vg-volume *ngIf="innerWidth > 600"></vg-volume>-->
 
-                                <vg-fullscreen></vg-fullscreen>
-                            </vg-controls>
+<!--                                <vg-fullscreen></vg-fullscreen>-->
+<!--                            </vg-controls>-->
 
-                            <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
-                                <source src="assets/videos/video4947608652031722120.mp4" type="video/mp4">
-                            </video>
-                        </vg-player>
+<!--                            <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>-->
+<!--                                <source src="assets/videos/video4947608652031722120.mp4" type="video/mp4">-->
+<!--                            </video>-->
+<!--                        </vg-player>-->
+                        <youtube-player videoId="an0GXSfaP44" suggestedQuality="highres" width="100%" height="100%">
+
+                        </youtube-player>
                     </div>
                     <div class="photos-div" *ngIf="leaveFinished && selectionState === 'Fotos'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
                         <carousel #carousel [cellsToShow]="1" [loop]="true" [images]="randomImages" [objectFit]="'contain'" [arrows]="innerWidth > 600" [counter]="true"></carousel>

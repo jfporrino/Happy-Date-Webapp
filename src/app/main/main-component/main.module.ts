@@ -11,6 +11,7 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {NgScrollbarModule} from 'ngx-scrollbar';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 const routes: Routes = [
     {
@@ -34,7 +35,8 @@ const routes: Routes = [
         VgBufferingModule,
         MatButtonModule,
         MatIconModule,
-        NgScrollbarModule
+        NgScrollbarModule,
+        YouTubePlayerModule
     ],
     providers: [],
 })
