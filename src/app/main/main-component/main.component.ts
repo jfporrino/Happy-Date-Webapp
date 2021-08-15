@@ -1,7 +1,8 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import * as Vara from 'vara';
 import {bounceInUpOnEnterAnimation, fadeInOnEnterAnimation, zoomInOnEnterAnimation, zoomOutOnLeaveAnimation} from 'angular-animations';
 import {images} from 'src/app/helpers/constants/images.constants';
+import {CarouselComponent} from 'angular-responsive-carousel';
 
 @Component({
   selector: 'main',
@@ -14,9 +15,10 @@ import {images} from 'src/app/helpers/constants/images.constants';
       zoomOutOnLeaveAnimation()
   ]
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit, AfterViewInit{
   innerWidth;
   innerHeight;
+
   varaIsDone = false;
   initIsDone = false;
   vara;
@@ -31,20 +33,26 @@ export class MainComponent implements OnInit{
   selectionState = 'Video';
   leaveFinished = true;
 
+  @ViewChild('carousel')
+  carousel: CarouselComponent;
+
   constructor() { }
 
   ngOnInit(): void {
     this.images = images;
-    this.randomImages = this.getRandom(this.images, 20).map((i) => {
-      return {path: i};
-    });
 
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
 
+    this.randomizeImages();
+
     this.initStars();
 
     this.signature();
+  }
+
+  ngAfterViewInit(){
+    // this.carousel.
   }
 
   @HostListener('window:resize', ['$event'])
@@ -53,6 +61,12 @@ export class MainComponent implements OnInit{
     this.innerHeight = window.innerHeight;
     this.initStars();
     this.signature();
+  }
+
+  randomizeImages(){
+    this.randomImages = this.getRandom(this.images, 20).map((i) => {
+      return {path: i};
+    });
   }
 
   signature() {

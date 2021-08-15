@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^12.1.4",
-    "@angular/cdk": "^12.1.4",
+    "@angular/cdk": "^12.2.1",
     "@angular/common": "~12.1.4",
     "@angular/compiler": "~12.1.4",
     "@angular/core": "~12.1.4",
@@ -24,6 +24,7 @@
     "@videogular/ngx-videogular": "^4.1.0",
     "angular-animations": "^0.11.0",
     "angular-responsive-carousel": "^2.1.2",
+    "ngx-scrollbar": "^7.6.1",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "vara": "^1.2.0",

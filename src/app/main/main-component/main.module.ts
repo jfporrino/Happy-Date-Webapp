@@ -8,6 +8,9 @@ import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
 import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
 import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {NgScrollbarModule} from 'ngx-scrollbar';
 
 const routes: Routes = [
     {
@@ -28,7 +31,10 @@ const routes: Routes = [
         VgCoreModule,
         VgControlsModule,
         VgOverlayPlayModule,
-        VgBufferingModule
+        VgBufferingModule,
+        MatButtonModule,
+        MatIconModule,
+        NgScrollbarModule
     ],
     providers: [],
 })

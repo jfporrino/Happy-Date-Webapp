@@ -17,44 +17,72 @@
         </div>
     </div>
     <div *ngIf="initIsDone" class="content-div" [@zoomInOnEnter]>
-        <div class="video-div" *ngIf="leaveFinished && selectionState === 'Video'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
-            <vg-player>
-                <vg-overlay-play></vg-overlay-play>
-                <vg-buffering></vg-buffering>
+        <div class="outer-border">
+            <div class="mid-border">
+                <div class="inner-border">
+                    <img class="corner-decoration corner-left-top" src="assets/imageedit_3_7855246474.jpg"/>
+                    <img class="corner-decoration corner-right-top" src="assets/imageedit_3_7855246474.jpg"/>
+                    <img class="corner-decoration corner-right-bottom" src="assets/imageedit_3_7855246474.jpg"/>
+                    <img class="corner-decoration corner-left-bottom" src="assets/imageedit_3_7855246474.jpg"/>
+                    <div class="video-div" *ngIf="leaveFinished && selectionState === 'Video'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
+                        <vg-player>
+                            <vg-overlay-play></vg-overlay-play>
+                            <vg-buffering></vg-buffering>
 
-                <vg-scrub-bar>
-                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                    <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-                </vg-scrub-bar>
+                            <vg-scrub-bar *ngIf="innerWidth > 600">
+                                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                            </vg-scrub-bar>
 
-                <vg-controls>
-                    <vg-play-pause></vg-play-pause>
-                    <vg-playback-button></vg-playback-button>
+                            <vg-controls>
+                                <vg-play-pause></vg-play-pause>
+                                <vg-playback-button *ngIf="innerWidth > 600"></vg-playback-button>
 
-                    <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                                <span class="time-span" *ngIf="innerWidth > 600">/</span>
+                                <vg-time-display vgProperty="total" vgFormat="mm:ss" *ngIf="innerWidth > 600"></vg-time-display>
 
-                    <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                                <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
 
-                    <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
-                    <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
 
-<!--                    <vg-track-selector></vg-track-selector>-->
-                    <vg-mute></vg-mute>
-                    <vg-volume></vg-volume>
+            <!--                    <vg-track-selector></vg-track-selector>-->
+                                <vg-mute *ngIf="innerWidth > 600"></vg-mute>
+                                <vg-volume *ngIf="innerWidth > 600"></vg-volume>
 
-                    <vg-fullscreen></vg-fullscreen>
-                </vg-controls>
+                                <vg-fullscreen></vg-fullscreen>
+                            </vg-controls>
 
-                <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
-                    <source src="assets/videos/video4947608652031722120.mp4" type="video/mp4">
-                </video>
-            </vg-player>
+                            <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
+                                <source src="assets/videos/video4947608652031722120.mp4" type="video/mp4">
+                            </video>
+                        </vg-player>
+                    </div>
+                    <div class="photos-div" *ngIf="leaveFinished && selectionState === 'Fotos'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
+                        <carousel #carousel [cellsToShow]="1" [loop]="true" [images]="randomImages" [objectFit]="'contain'" [arrows]="innerWidth > 600" [counter]="true"></carousel>
+                        <button mat-stroked-button (click)="randomizeImages()">
+                            <mat-icon>shuffle</mat-icon>
+                            <span>Random!</span>
+                        </button>
+                    </div>
+                    <div class="letter-div" *ngIf="leaveFinished && selectionState === 'Cartita'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
+                        <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar">
+                            <h1>Lau,</h1>
+                            <div class="span-div">Al fin llegó el día. Nuestro día. Hoy hace un año nos embarcamos en una aventura, cuyo destino ninguno de los dos podía predecir. Nos dimos fuerte la mano y dimos un paso hacia adelante sin saber lo que nos esperaba. El presente era incierto y el futuro mucho más.</div><br>
+                            <div class="span-div">Nuestra vida hace un año era rara. Veníamos de pasar casi 5 meses sin vernos después de haber salido esporádicamente entre diciembre y marzo. Pasaron cosas que nos llenaron de incertidumbre y miedo, tanto personales como entre nosotros. Fueron, sin duda, 5 meses difíciles.</div><br>
+                            <div class="span-div">Sin embargo, desde el momento en que nos aislamos, nos llenó de esperanza la idea del reencuentro. Estaba claro: ni siquiera la pandemia nos iba a hacer dar marcha atrás acerca de nuestros sentimientos. Y esa determinación, por más cursi que suene, nos daba ánimos para enfrentarnos a todos los momentos duros y tristes que pudiesen venir. Por más aislados que estemos, siempre íbamos a estar juntos.</div><br>
+                            <div class="span-div">Incluso desde que nos pusimos de novios ese bello 16 de agosto nuestras vidas siguieron cambiando y cada tanto fueron apareciendo dificultades. Pero, siempre acompañados y sostenidos por el otro, superamos los obstáculos en nuestro camino.</div><br>
+                            <div class="span-div">No puedo poner en palabras lo que significa para mí contar con vos, ni mucho menos lo agradecido que estoy por tenerte en mi vida. Realmente este año fue el más especial que viví, y eso todo porque te tengo a mí lado. La felicidad que siento es infinita y es todo gracias al amor que me das. Nunca pensé que iba a sentirme así.</div><br>
+                            <div class="span-div">Cada vez que veo nuestras fotos, pienso en lo afortunado que soy de haber podido vivir todos esos momentos felices y se me dibuja una sonrisa de oreja a oreja en la cara. Instantáneamente empiezo a fantasear en las salidas por venir y en un sinfín de cosas que quiero que hagamos y lugares que quiero que visitemos juntos. El futuro se convirtió de incierto a prometedor de un año para el otro.</div><br>
+                            <div class="span-div">Espero que más allá de lo empalagoso, te genere placer recibir esta cartita como a mí me generó placer escribirla y expresar mis sentimientos por vos.</div><br>
+                            <div class="span-div">Te amo hoy y siempre,</div><br>
+                            <div class="letter-bottom">
+                                <h1>Juan</h1>
+                            </div>
+                        </ng-scrollbar>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="photos-div" *ngIf="leaveFinished && selectionState === 'Fotos'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
-            <carousel [cellsToShow]="1" [loop]="true" [images]="randomImages" [objectFit]="'contain'"></carousel>
-        </div>
-        <div class="letter-div" *ngIf="leaveFinished && selectionState === 'Cartita'" [@zoomInOnEnter] [@zoomOutOnLeave] (@zoomOutOnLeave.done)="leaveDone()">
-            <h1>Cartita</h1>
-        </div>
+
     </div>
 </div>
